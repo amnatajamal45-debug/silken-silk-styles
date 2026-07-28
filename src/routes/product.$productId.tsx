@@ -57,7 +57,7 @@ export const Route = createFileRoute("/product/$productId")({
 });
 
 function ProductDetail() {
-  const { product } = Route.useLoaderData();
+  const { product } = Route.useLoaderData() as { product: Product };
   const { add } = useCart();
   const [size, setSize] = useState(product.sizes[0]);
   const [colour, setColour] = useState(product.colours[0]);
