@@ -58,7 +58,7 @@ function Shop() {
   const navigate = Route.useNavigate();
 
   const set = (patch: Partial<ShopSearch>) =>
-    navigate({ search: (prev) => ({ ...prev, ...patch }) });
+    navigate({ search: (prev: ShopSearch) => ({ ...prev, ...patch }) });
 
   const list = useMemo(() => {
     let out = products.filter((p) => {
