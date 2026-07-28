@@ -2,7 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useState } from "react";
 import { Heart, Minus, Plus, Star, Truck } from "lucide-react";
 import { toast } from "sonner";
-import { formatPKR, getProduct, products } from "@/lib/products";
+import { formatPKR, getProduct, products, type Product } from "@/lib/products";
 import { useCart } from "@/lib/cart";
 import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/product-card";
@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/accordion";
 
 export const Route = createFileRoute("/product/$productId")({
-  loader: ({ params }) => {
+  loader: ({ params }): { product: Product } => {
     const product = getProduct(params.productId);
     if (!product) throw notFound();
     return { product };
